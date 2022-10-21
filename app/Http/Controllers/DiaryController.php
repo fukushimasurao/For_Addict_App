@@ -14,7 +14,8 @@ class DiaryController extends Controller
      */
     public function index()
     {
-        //
+        $diaries = Diary::all();
+        return view('diary.index', ['diaries' => $diaries]);
     }
 
     /**
