@@ -44,7 +44,7 @@
 @endif
 
 {{-- Subcopy --}}
-@isset($actionText)s
+@isset($actionText)
 <x-slot:subcopy>
 @lang(
     "If you're having trouble clicking the \":actionText\" button, copy and paste the URL below\n".
