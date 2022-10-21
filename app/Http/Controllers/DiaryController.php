@@ -14,7 +14,7 @@ class DiaryController extends Controller
      */
     public function index()
     {
-        $diaries = Diary::all();
+        $diaries = Diary::paginate(10);
         return view('diary.index', ['diaries' => $diaries]);
     }
 
