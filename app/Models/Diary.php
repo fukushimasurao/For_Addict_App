@@ -16,4 +16,10 @@ class Diary extends Model
     // elapsed_time 経過時間、どれくらい続いたのか（分） tinyInteger (1-255) not_null
     // feeling その時の気分感情思などな text null許容
     // coping_measures 症状への対処法や反省点 text null許容
+
+
+    public function user()
+    {
+        return $this->belongsTo('App\User');
+    }
 }
