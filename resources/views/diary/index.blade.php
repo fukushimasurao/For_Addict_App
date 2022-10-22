@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('症状の記録') }}
+            {{ __('症状日記') }}
         </h2>
     </x-slot>
 
@@ -55,7 +55,7 @@
                                         {{ Str::limit($diary->coping_measures, 20, '...') }}</td>
 
                                     <td class="border-t-2 border-gray-200 px-4 py-3"> <button
-                                            onclick="location.href='/book/detail/{{ $diary->id }}'"
+                                            onclick="location.href='/diary/detail/{{ $diary->id }}'"
                                             class="text-sm shadow bg-gray-500 hover:bg-gray-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded">詳細</button>
                                     </td>
                                 </tr>
