@@ -19,7 +19,7 @@
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-nav-link :href="route('diary')" :active="request()->routeIs('diary')">
-                        {{ __('症状の記録') }}
+                        {{ __('記録する') }}
                     </x-nav-link>
                 </div>
             </div>

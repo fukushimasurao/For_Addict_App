@@ -14,8 +14,14 @@ Route::get('/dashboard', function () {
 
 Route::middleware(['auth'])->prefix('diary')->group(function () {
     Route::get('/', [DiaryController::class, 'index'])->name('diary');
+    Route::get('/create', [DiaryController::class, 'create'])->name('diary.create');
+
     Route::get('/detail/{id}', [DiaryController::class, 'detail'])->name('diary.detail');
     Route::get('/edit/{id}', [DiaryController::class, 'edit'])->name('diary.edit');
+
+
+    Route::post('/create', [DiaryController::class, 'store'])->name('diary.store');
+
     Route::PATCH('/update', [DiaryController::class, 'update'])->name('diary.update');
 });
 

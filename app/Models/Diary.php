@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Diary extends Model
 {
     use HasFactory;
-
+    protected $fillable = ['user_id', 'date', 'time', 'elapsed_time', 'feeling', 'coping_measures'];
     // id 一意,auto_increment
     // user_id int not_null
     // date 症状が発生し日付 date not_null 記録作成時は非表示にする。

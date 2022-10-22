@@ -40,7 +40,7 @@ class DiaryController extends Controller
      */
     public function create()
     {
-        //
+        return view('diary.create');
     }
 
     /**
@@ -51,7 +51,21 @@ class DiaryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $user_id = Auth::id();
+        try {
+            Diary::create([
+                'user_id' => $user_id,
+                'date' => $request->date,
+                'time' => $request->time,
+                'feeling' => $request->feeling,
+                'elapsed_time' => $request->elapsed_time,
+                'coping_measures' => $request->coping_measures,
+            ]);
+            return redirect('diary')->with('status', '記録を作成しました。');
+        } catch (\Exception $ex) {
+            logger($ex->getMessage());
+            return redirect('diary')->withErrors($ex->getMessage());
+        }
     }
 
     /**
