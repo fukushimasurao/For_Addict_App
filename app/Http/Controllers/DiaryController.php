@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Diary;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class DiaryController extends Controller
 {
@@ -14,7 +15,9 @@ class DiaryController extends Controller
      */
     public function index()
     {
-        $diaries = Diary::paginate(10);
+        // $user = Auth::user();
+        $id = Auth::id();
+        $diaries = Diary::where('user_id', $id)->paginate(10);
         return view('diary.index', ['diaries' => $diaries]);
     }
 

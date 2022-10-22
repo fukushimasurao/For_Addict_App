@@ -16,9 +16,9 @@
                                 <th
                                     class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100 rounded-tl rounded-bl">
                                     id</th>
-                                {{-- <th
+                                <th
                                     class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">
-                                    user id</th> --}}
+                                    user id</th>
                                 <th
                                     class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">
                                     記録日</th>
@@ -44,7 +44,7 @@
                             @foreach ($diaries as $diary)
                                 <tr>
                                     <td class="border-t-2 border-gray-200 px-4 py-3">{{ $diary->id }}</td>
-                                    {{-- <td class="border-t-2 border-gray-200 px-4 py-3">{{ $diary->user_id }}</td> --}}
+                                    <td class="border-t-2 border-gray-200 px-4 py-3">{{ $diary->user_id }}</td>
                                     <td class="border-t-2 border-gray-200 px-4 py-3">
                                         {{ Carbon\Carbon::parse($diary->date)->format('Y年n月j日') }}</td>
                                     <td class="border-t-2 border-gray-200 px-4 py-3">{{ $diary->time }}</td>
@@ -54,8 +54,10 @@
                                     <td class="border-t-2 border-gray-200 px-4 py-3">
                                         {{ Str::limit($diary->coping_measures, 20, '...') }}</td>
 
-                                    <td class="border-t-2 border-gray-200 px-4 py-3"> <button onclick="location.href='/book/detail/{{$diary->id }}'" class="text-sm shadow bg-gray-500 hover:bg-gray-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded">詳細</button>
-</td>
+                                    <td class="border-t-2 border-gray-200 px-4 py-3"> <button
+                                            onclick="location.href='/book/detail/{{ $diary->id }}'"
+                                            class="text-sm shadow bg-gray-500 hover:bg-gray-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded">詳細</button>
+                                    </td>
                                 </tr>
                             @endforeach
                         </tbody>
