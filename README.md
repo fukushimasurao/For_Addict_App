@@ -64,6 +64,8 @@ laravel * sailを利用。
 - mailhog
 <http://localhost:8025/>
 
+Trello 公開済み <https://trello.com/b/nlcqW4Uq>
+
 ![名称未設定のノート中毒-2](https://user-images.githubusercontent.com/46878156/188294648-2f51a2ff-896a-4862-82d8-aeaa37ce6249.jpg)
 ![名称未設定のノート中毒-3](https://user-images.githubusercontent.com/46878156/188294647-8a847188-7337-4208-a728-ea71cc51a2c1.jpg)
 ![名称未設定のノート中毒-4](https://user-images.githubusercontent.com/46878156/188294646-1ebe6771-cf79-4e45-8b76-bb65a24fda38.jpg)
@@ -72,6 +74,3 @@ laravel * sailを利用。
 ![名称未設定のノート中毒-7](https://user-images.githubusercontent.com/46878156/188294642-09588b06-dfca-4b31-9c15-5dfbf6ba1e19.jpg)
 ![名称未設定のノート中毒-8](https://user-images.githubusercontent.com/46878156/188294640-bbf164c8-9787-448f-ba3e-70b80f0845a2.jpg)
 ![名称未設定のノート中毒-9](https://user-images.githubusercontent.com/46878156/188294639-ffa8cbef-0900-4791-8fdb-bde899582deb.jpg)
-
-Trello 公開済み
-<https://trello.com/b/nlcqW4Uq>
