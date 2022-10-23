@@ -103,7 +103,7 @@ class DiaryController extends Controller
             $diary->coping_measures = $request->input('coping_measures');
             $diary->save();
             DB::commit();
-            return redirect('diary')->with('status', '日記を更新しました。');
+            return redirect('diary')->with('status', '記録を更新しました。');
         } catch (\Exception $ex) {
             DB::rollback();
             logger($ex->getMessage());
@@ -117,8 +117,14 @@ class DiaryController extends Controller
      * @param  \App\Models\Diary  $diary
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Diary $diary)
+    public function destroy($id)
     {
-        //
+        try {
+            Diary::find($id)->delete();
+            return redirect('diary')->with('status', '記録を削除しました。');
+        } catch (\Exception $ex) {
+            logger($ex->getMessage());
+            return redirect('diary')->withErrors($ex->getMessage());
+        }
     }
 }

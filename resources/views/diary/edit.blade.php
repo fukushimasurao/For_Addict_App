@@ -45,7 +45,7 @@
                                         <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
                                             <div class="col-span-6 sm:col-span-3">
                                                 <input type="time" name="time" id="time"
-                                                    value="{{ Carbon\Carbon::parse($diary->time)->format('G:i') }}"
+                                                    value="{{ Carbon\Carbon::parse($diary->time)->format('H:i') }}"
                                                     class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
                                             </div>
                                         </dd>
