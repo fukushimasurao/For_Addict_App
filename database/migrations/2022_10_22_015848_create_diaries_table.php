@@ -20,6 +20,7 @@ return new class () extends Migration {
             $table->smallInteger('elapsed_time')->comment('経過時間、どれくらい続いたのか（分）');
             $table->text('feeling')->nullable()->comment('その時の気分感情思など');
             $table->text('coping_measures')->nullable()->comment('症状への対処法や反省点');
+            $table->tinyInteger('importance')->nullable()->default(1)->comment('症状への対処法や反省点');
             $table->timestamps();
         });
     }
