@@ -18,7 +18,7 @@
                     </x-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('diary')" :active="request()->routeIs('diary')">
+                    <x-nav-link :href="route('diary.create')" :active="request()->routeIs('diary.create')">
                         {{ __('記録する') }}
                     </x-nav-link>
                 </div>
