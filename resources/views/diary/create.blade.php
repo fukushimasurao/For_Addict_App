@@ -29,6 +29,19 @@
                                         <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
                                         </dd>
                                     </div>
+
+                                    <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                                        <dt class="text-sm font-medium text-gray-500">重要度</dt>
+                                        <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
+                                            <select id="importance" name="importance"
+                                                class="mt-1 block w-full rounded-md border border-gray-300 bg-white py-2 px-3 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm">
+                                                @foreach (App\Models\Diary::DIARY_STATUS_OBJECT as $k => $v)
+                                                    <option value="{{ $k }}">
+                                                        {{ $v }}</option>
+                                                @endforeach
+                                            </select>
+                                        </dd>
+                                    </div>
                                     <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                                         <dt class="text-sm font-medium text-gray-500">記録日</dt>
                                         <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
