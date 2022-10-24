@@ -41,6 +41,22 @@
                                                         {{ $v }}</option>
                                                 @endforeach
                                             </select>
+                                            <small class="text-blue-800">※必須</small>
+                                            @error('importance')
+                                                <div class="flex p-4 my-2 text-sm text-red-700 bg-red-100 rounded-lg dark:bg-red-200 dark:text-red-800"
+                                                    role="alert">
+                                                    <svg aria-hidden="true" class="flex-shrink-0 inline w-5 h-5 mr-3"
+                                                        fill="currentColor" viewBox="0 0 20 20"
+                                                        xmlns="http://www.w3.org/2000/svg">
+                                                        <path fill-rule="evenodd"
+                                                            d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z"
+                                                            clip-rule="evenodd"></path>
+                                                    </svg>
+                                                    <div>
+                                                        <span>{{ $message }}</span>
+                                                    </div>
+                                                </div>
+                                            @enderror
                                         </dd>
                                     </div>
 
@@ -49,9 +65,28 @@
                                         <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
                                             <div class="col-span-6 sm:col-span-3">
                                                 <input type="date" name="date" id="date"
-                                                    value="{{ Carbon\Carbon::parse($diary->date)->format('Y-m-d') }}"
+                                                    @if (is_null(old('date'))) value="{{ Carbon\Carbon::parse($diary->date)->format('Y-m-d') }}"
+                                                    @else
+                                                    value="{{ old('date') }}" @endif
                                                     class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
+                                                <small class="text-blue-800">※必須</small>
+
                                             </div>
+                                            @error('date')
+                                                <div class="flex p-4 my-2 text-sm text-red-700 bg-red-100 rounded-lg dark:bg-red-200 dark:text-red-800"
+                                                    role="alert">
+                                                    <svg aria-hidden="true" class="flex-shrink-0 inline w-5 h-5 mr-3"
+                                                        fill="currentColor" viewBox="0 0 20 20"
+                                                        xmlns="http://www.w3.org/2000/svg">
+                                                        <path fill-rule="evenodd"
+                                                            d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z"
+                                                            clip-rule="evenodd"></path>
+                                                    </svg>
+                                                    <div>
+                                                        <span>{{ $message }}</span>
+                                                    </div>
+                                                </div>
+                                            @enderror
                                         </dd>
                                     </div>
                                     <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
@@ -59,9 +94,27 @@
                                         <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
                                             <div class="col-span-6 sm:col-span-3">
                                                 <input type="time" name="time" id="time"
-                                                    value="{{ Carbon\Carbon::parse($diary->time)->format('H:i') }}"
+                                                    @if (is_null(old('time'))) value="{{ Carbon\Carbon::parse($diary->time)->format('H:i') }}"
+                                                    @else
+                                                    value="{{ old('time') }}" @endif
                                                     class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
+                                                <small class="text-blue-800">※必須</small>
                                             </div>
+                                            @error('time')
+                                                <div class="flex p-4 my-2 text-sm text-red-700 bg-red-100 rounded-lg dark:bg-red-200 dark:text-red-800"
+                                                    role="alert">
+                                                    <svg aria-hidden="true" class="flex-shrink-0 inline w-5 h-5 mr-3"
+                                                        fill="currentColor" viewBox="0 0 20 20"
+                                                        xmlns="http://www.w3.org/2000/svg">
+                                                        <path fill-rule="evenodd"
+                                                            d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z"
+                                                            clip-rule="evenodd"></path>
+                                                    </svg>
+                                                    <div>
+                                                        <span>{{ $message }}</span>
+                                                    </div>
+                                                </div>
+                                            @enderror
                                         </dd>
                                     </div>
                                     <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
@@ -69,9 +122,28 @@
                                         <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
                                             <div class="col-span-6 sm:col-span-3">
                                                 <input type="text" name="elapsed_time" id="elapsed_time"
-                                                    autocomplete="elapsed_time" value="{{ $diary->elapsed_time }}"
+                                                    autocomplete="elapsed_time"
+                                                    @if (is_null(old('elapsed_time'))) value="{{ $diary->elapsed_time }}"
+                                                    @else
+                                                    value="{{ old('elapsed_time') }}" @endif
                                                     class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
+                                                <small class="text-blue-800">※必須、半角数字、1〜300分以内</small>
                                             </div>
+                                            @error('elapsed_time')
+                                                <div class="flex p-4 my-2 text-sm text-red-700 bg-red-100 rounded-lg dark:bg-red-200 dark:text-red-800"
+                                                    role="alert">
+                                                    <svg aria-hidden="true" class="flex-shrink-0 inline w-5 h-5 mr-3"
+                                                        fill="currentColor" viewBox="0 0 20 20"
+                                                        xmlns="http://www.w3.org/2000/svg">
+                                                        <path fill-rule="evenodd"
+                                                            d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z"
+                                                            clip-rule="evenodd"></path>
+                                                    </svg>
+                                                    <div>
+                                                        <span>{{ $message }}</span>
+                                                    </div>
+                                                </div>
+                                            @enderror
                                         </dd>
                                     </div>
                                     <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
@@ -79,9 +151,30 @@
                                         <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
                                             <div class="mt-1">
                                                 <textarea id="feeling" name="feeling" rows="3"
-                                                    class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">{{ $diary->feeling }}
+                                                    class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
+@if (is_null(old('feeling')))
+{{ $diary->feeling }}
+@else
+{{ old('feeling') }}
+@endif
                                             </textarea>
+                                                <small class="text-blue-800">※必須、1000文字以内</small>
                                             </div>
+                                            @error('feeling')
+                                                <div class="flex p-4 my-2 text-sm text-red-700 bg-red-100 rounded-lg dark:bg-red-200 dark:text-red-800"
+                                                    role="alert">
+                                                    <svg aria-hidden="true" class="flex-shrink-0 inline w-5 h-5 mr-3"
+                                                        fill="currentColor" viewBox="0 0 20 20"
+                                                        xmlns="http://www.w3.org/2000/svg">
+                                                        <path fill-rule="evenodd"
+                                                            d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z"
+                                                            clip-rule="evenodd"></path>
+                                                    </svg>
+                                                    <div>
+                                                        <span>{{ $message }}</span>
+                                                    </div>
+                                                </div>
+                                            @enderror
                                         </dd>
                                     </div>
                                     <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
@@ -89,9 +182,31 @@
                                         <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
                                             <div class="mt-1">
                                                 <textarea id="coping_measures" name="coping_measures" rows="3"
-                                                    class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">{{ $diary->coping_measures }}
+                                                    class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
+@if (is_null(old('coping_measures')))
+{{ $diary->coping_measures }}
+@else
+{{ old('coping_measures') }}
+@endif
                                             </textarea>
+                                                <small class="text-blue-800">※必須、1000文字以内</small>
+
                                             </div>
+                                            @error('coping_measures')
+                                                <div class="flex p-4 my-2 text-sm text-red-700 bg-red-100 rounded-lg dark:bg-red-200 dark:text-red-800"
+                                                    role="alert">
+                                                    <svg aria-hidden="true" class="flex-shrink-0 inline w-5 h-5 mr-3"
+                                                        fill="currentColor" viewBox="0 0 20 20"
+                                                        xmlns="http://www.w3.org/2000/svg">
+                                                        <path fill-rule="evenodd"
+                                                            d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z"
+                                                            clip-rule="evenodd"></path>
+                                                    </svg>
+                                                    <div>
+                                                        <span>{{ $message }}</span>
+                                                    </div>
+                                                </div>
+                                            @enderror
                                         </dd>
                                     </div>
 

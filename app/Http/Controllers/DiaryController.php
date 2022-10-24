@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 use App\Http\Requests\DiaryStoreRequest;
+use App\Http\Requests\DiaryUpdateRequest;
 
 class DiaryController extends Controller
 {
@@ -95,14 +96,15 @@ class DiaryController extends Controller
      * @param  \App\Models\Diary  $diary
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Diary $diary)
+    public function update(DiaryUpdateRequest $request, Diary $diary)
     {
         try {
             DB::beginTransaction();
             $diary = Diary::find($request->input('id'));
-            $diary->date = $request->input('date');
             $diary->importance = $request->input('importance');
+            $diary->date = $request->input('date');
             $diary->time = $request->input('time');
+            $diary->elapsed_time = $request->input('elapsed_time');
             $diary->feeling = $request->input('feeling');
             $diary->coping_measures = $request->input('coping_measures');
             $diary->save();
