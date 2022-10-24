@@ -19,7 +19,8 @@ class DiaryController extends Controller
         // $user = Auth::user();
         $id = Auth::id();
         $diaries = Diary::where('user_id', $id)->paginate(10);
-        return view('diary.index', ['diaries' => $diaries]);
+        return view('diary.index', compact('diaries'));
+        // return view('diary.2index', ['diaries' => $diaries]);
     }
 
     public function detail($id)
@@ -29,8 +30,9 @@ class DiaryController extends Controller
         }
 
         $user_id = Auth::id();
-        $diary = Diary::where('user_id', $user_id)->find($id);
-        return view('diary.detail', ['diary' => $diary]);
+        $diary = Diary::where('user_id', $user_id)->findOrFail($id);
+        $importance_emoji = Diary::DIARY_STATUS_OBJECT[$diary->importance];
+        return view('diary.detail', compact('diary', 'importance_emoji'));
     }
 
     /**
@@ -55,6 +57,7 @@ class DiaryController extends Controller
         try {
             Diary::create([
                 'user_id' => $user_id,
+                'importance' => $request->importance,
                 'date' => $request->date,
                 'time' => $request->time,
                 'feeling' => $request->feeling,
@@ -98,6 +101,7 @@ class DiaryController extends Controller
             DB::beginTransaction();
             $diary = Diary::find($request->input('id'));
             $diary->date = $request->input('date');
+            $diary->importance = $request->input('importance');
             $diary->time = $request->input('time');
             $diary->feeling = $request->input('feeling');
             $diary->coping_measures = $request->input('coping_measures');

@@ -26,7 +26,9 @@
                                         <div
                                             class="h-full p-6 rounded-lg border-2 border-indigo-500 flex flex-col relative overflow-hidden">
                                             <span
-                                                class="bg-indigo-500 text-white px-3 py-1 tracking-widest text-xs absolute right-0 top-0 rounded-bl">⭐️⭐️⭐️⭐️</span>
+                                                class="bg-indigo-500 text-white px-3 py-1 tracking-widest text-xs absolute right-0 top-0 rounded-bl">
+                                                {{ App\Models\Diary::DIARY_STATUS_OBJECT[$diary->importance] }}
+                                            </span>
                                             <h2 class="text-sm tracking-widest title-font mb-1 font-medium">
                                                 {{ Carbon\Carbon::parse($diary->date)->format('Y年n月j日') }} /
                                                 {{ Carbon\Carbon::parse($diary->time)->format('H:i') }}</h2>
@@ -53,7 +55,7 @@
                                                     </svg>
                                                 </span>{{ Str::limit($diary->coping_measures, 20, '...') }}
                                             </p>
-                                            <button
+                                            <button onclick="location.href='/diary/detail/{{ $diary->id }}'"
                                                 class="flex items-center mt-auto text-white bg-indigo-500 border-0 py-2 px-4 w-full focus:outline-none hover:bg-indigo-600 rounded">詳細
                                                 <svg fill="none" stroke="currentColor" stroke-linecap="round"
                                                     stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-auto"
@@ -64,14 +66,9 @@
                                         </div>
                                     </div>
                                 @endforeach
-
-
                             </div>
                         </div>
                     </section>
-
-
-
 
                     {{ $diaries->links() }}
                 </div>
