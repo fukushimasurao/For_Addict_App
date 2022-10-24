@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
+use App\Http\Requests\DiaryStoreRequest;
+
 class DiaryController extends Controller
 {
     /**
@@ -16,11 +18,9 @@ class DiaryController extends Controller
      */
     public function index()
     {
-        // $user = Auth::user();
         $id = Auth::id();
-        $diaries = Diary::where('user_id', $id)->paginate(10);
+        $diaries = Diary::where('user_id', $id)->orderBy('created_at', 'desc')->paginate(10);
         return view('diary.index', compact('diaries'));
-        // return view('diary.2index', ['diaries' => $diaries]);
     }
 
     public function detail($id)
@@ -51,7 +51,7 @@ class DiaryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(DiaryStoreRequest $request)
     {
         $user_id = Auth::id();
         try {
