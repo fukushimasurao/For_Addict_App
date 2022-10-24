@@ -15,7 +15,6 @@ Route::get('/dashboard', function () {
 Route::middleware(['auth'])->prefix('diary')->controller(DiaryController::class)->group(function () {
     Route::get('/', 'index')->name('diary');
     Route::get('/create', 'create')->name('diary.create');
-
     Route::get('/detail/{id}', 'detail')->name('diary.detail');
     Route::get('/edit/{id}', 'edit')->name('diary.edit');
     Route::post('/create', 'store')->name('diary.store');
