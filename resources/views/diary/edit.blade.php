@@ -157,7 +157,7 @@
 @else
 {{ old('feeling') }}
 @endif
-                                            </textarea>
+</textarea>
                                                 <small class="text-blue-800">※必須、1000文字以内</small>
                                             </div>
                                             @error('feeling')
@@ -188,9 +188,8 @@
 @else
 {{ old('coping_measures') }}
 @endif
-                                            </textarea>
+</textarea>
                                                 <small class="text-blue-800">※必須、1000文字以内</small>
-
                                             </div>
                                             @error('coping_measures')
                                                 <div class="flex p-4 my-2 text-sm text-red-700 bg-red-100 rounded-lg dark:bg-red-200 dark:text-red-800"
