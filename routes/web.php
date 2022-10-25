@@ -12,7 +12,7 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard')->middleware('verified');
 
 
-Route::middleware(['auth'])->prefix('diary')->controller(DiaryController::class)->group(function () {
+Route::middleware(['auth'])->middleware('verified')->prefix('diary')->controller(DiaryController::class)->group(function () {
     Route::get('/', 'index')->name('diary');
     Route::get('/create', 'create')->name('diary.create');
     Route::get('/detail/{uuid}', 'detail')->name('diary.detail');
