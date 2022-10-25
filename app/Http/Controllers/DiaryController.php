@@ -20,18 +20,19 @@ class DiaryController extends Controller
     public function index()
     {
         $id = Auth::id();
-        $diaries = Diary::where('user_id', $id)->orderBy('created_at', 'desc')->paginate(10);
+        $diaries = Diary::query()->where('user_id', $id)->orderBy('created_at', 'desc')->paginate(10);
+
+        // ddd($diaries);
         return view('diary.index', compact('diaries'));
     }
 
-    public function detail($id)
+    public function detail($uuid)
     {
         if (!Auth::check()) {
             redirect(route('index'));
         }
-
         $user_id = Auth::id();
-        $diary = Diary::where('user_id', $user_id)->findOrFail($id);
+        $diary = Diary::query()->where('user_id', $user_id)->where('uuid', $uuid)->first();
         $importance_emoji = Diary::DIARY_STATUS_OBJECT[$diary->importance];
         return view('diary.detail', compact('diary', 'importance_emoji'));
     }
@@ -58,6 +59,7 @@ class DiaryController extends Controller
         try {
             Diary::create([
                 'user_id' => $user_id,
+                'uuid' => str()->uuid(),
                 'importance' => $request->importance,
                 'date' => $request->date,
                 'time' => $request->time,

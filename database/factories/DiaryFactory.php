@@ -18,6 +18,7 @@ class DiaryFactory extends Factory
     {
         return [
             'user_id' => $this->faker->numberBetween(1, 255),
+            'uuid' => $this->faker->uuid(),
             'date' => $this->faker->date(),
             'time' => $this->faker->time(),
             'elapsed_time' => $this->faker->numberBetween(1, 255),
