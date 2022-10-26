@@ -149,7 +149,7 @@
                                         <dt class="text-sm font-medium text-gray-500">その時の気分感情</dt>
                                         <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
                                             <div class="mt-1">
-                                                <textarea id="feeling" name="feeling" rows="3"
+                                                <textarea id="feeling" name="feeling" rows="3" placeholder="例：自分にがっかりした、、、"
                                                     class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">{{ old('feeling') }}</textarea>
                                                 <small class="text-blue-800">※必須、1000文字以内</small>
                                             </div>
@@ -174,7 +174,7 @@
                                         <dt class="text-sm font-medium text-gray-500">症状への対処法・反省点</dt>
                                         <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
                                             <div class="mt-1">
-                                                <textarea id="coping_measures" name="coping_measures" rows="3"
+                                                <textarea id="coping_measures" name="coping_measures" rows="3" placeholder="例：パチ屋の見える道を歩かない！"
                                                     class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">{{ old('coping_measures') }}</textarea>
                                                 <small class="text-blue-800">※必須、1000文字以内</small>
 
