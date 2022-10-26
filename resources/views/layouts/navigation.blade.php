@@ -26,7 +26,7 @@
 
             @guest
                 <div class="hidden sm:flex sm:items-center sm:ml-6">
-                    <button
+                    <button onclick="location.href='{{ route('login') }}'"
                         class="flex mx-auto text-white bg-indigo-500 border-0 py-2 px-4 focus:outline-none hover:bg-indigo-600 rounded text-lg">Log
                         In</button>
                 </div>
@@ -52,14 +52,13 @@
                             </button>
                         </x-slot>
                         <x-slot name="content">
-                            <form method="POST" action="{{ route('logout') }}">
-                                @csrf
-                                <x-dropdown-link :href="route('logout')"
-                                    onclick="event.preventDefault();
-                                                this.closest('form').submit();">
+
+                            <form method="GET" action="{{ route('user.my_page') }}">
+                                <x-dropdown-link :href="route('user.my_page')">
                                     マイページ
                                 </x-dropdown-link>
                             </form>
+
                             <!-- Authentication -->
                             <form method="POST" action="{{ route('logout') }}">
                                 @csrf
