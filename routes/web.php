@@ -27,7 +27,7 @@ Route::middleware(['auth'])->middleware('verified')->prefix('diary')->controller
 
 Route::middleware(['auth'])->middleware('verified')->prefix('user')->controller(UserController::class)->group(function () {
     // Route::get('/my_page', 'index')->name('diary.my_page');
-//   マイページから、アドレスの変更、退会など。
+    //   マイページから、アドレスの変更、退会など。
 });
 
 require __DIR__.'/auth.php';

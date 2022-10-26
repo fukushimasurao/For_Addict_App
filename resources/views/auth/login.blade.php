@@ -58,7 +58,7 @@
         <div class="flex flex-col mx-auto sm:flex-row sm:justify-around">
             <button onclick="location.href='{{ route('register') }}'"
                 class="flex-shrink-0 text-white bg-green-500 border-0 py-2 px-8 focus:outline-none hover:bg-green-600 rounded text-lg mt-10 sm:mt-0">新規登録</button>
-            <button onclick="history.back();"
+            <button onclick="location.href='/'"
                 class="flex-shrink-0 text-white bg-purple-500 border-0 py-2 px-8 focus:outline-none hover:bg-purple-600 rounded text-lg mt-10 sm:mt-0">戻る</button>
         </div>
     </x-auth-card>
