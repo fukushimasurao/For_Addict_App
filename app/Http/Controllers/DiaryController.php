@@ -21,8 +21,6 @@ class DiaryController extends Controller
     {
         $id = Auth::id();
         $diaries = Diary::query()->where('user_id', $id)->orderBy('created_at', 'desc')->paginate(10);
-
-        // ddd($diaries);
         return view('diary.index', compact('diaries'));
     }
 

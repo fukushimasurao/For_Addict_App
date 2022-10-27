@@ -29,6 +29,7 @@ Route::middleware(['auth'])->middleware('verified')->prefix('user')->controller(
     Route::get('/my_page', 'index')->name('user.my_page');
     Route::get('/edit', 'edit')->name('user.edit');
     Route::patch('/update/{id}', 'update')->where('id', '[0-9]+')->name('user.update');
+    Route::get('/destroy/{id}', 'destroy')->where('id', '[0-9]+')->name('user.destroy');
     //   マイページから、アドレスの変更、退会など。
 });
 

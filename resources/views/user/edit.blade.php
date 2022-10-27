@@ -137,18 +137,29 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="bg-gray-50 px-4 py-3 text-right sm:px-6">
-                                                <button type="submit"
-                                                    class="inline-flex justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">変更する</button>
+
+                                            <div class="flex justify-around">
+                                                <div class="px-4 py-3 text-center sm:px-6">
+                                                    <span onclick="location.href='{{ route('login') }}'"
+                                                        class="cursor-pointer inline-flex justify-center rounded-md border border-transparent bg-gray-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">戻る</span>
+                                                </div>
+                                                <div class="px-4 py-3 text-right sm:px-6">
+                                                    <button type="submit"
+                                                        class="inline-flex justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">変更する</button>
+                                                </div>
+                                                <div class="px-4 py-3 text-center sm:px-6">
+                                                    <a href="{{ route('user.destroy', ['id' => Auth::user()->id]) }}"
+                                                        onclick="return confirm('ユーザーの削除をすると復元できません。\n本当に削除しますか？')"
+                                                        class="cursor-pointer inline-flex justify-center rounded-md border border-transparent bg-red-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">削除する</a>
+                                                </div>
                                             </div>
+
                                         </div>
                                     </form>
                                 </div>
                             </div>
                         </div>
                     </section>
-
-
 
                 </div>
             </div>

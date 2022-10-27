@@ -7,10 +7,11 @@
         </h2>
 
     </x-slot> --}}
-    {{-- @if (session('status'))
-        <x-ui.flash-message message="{{ session('status') }}"></x-ui.flash-message>
-    @endif --}}
-
+    @if ($errors)
+        @foreach ($errors->all() as $error)
+            <x-ui.flash-error-message message="{{ $error }}"></x-ui.flash-error-message>
+        @endforeach
+    @endif
     <div class="py-5">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
@@ -23,7 +24,6 @@
                             <div class="px-4 py-5 sm:px-6">
                                 <h3 class="text-lg text-center font-medium leading-6 text-gray-900">マイページ</h3>
                             </div>
-                            {{-- <div class="md:grid md:grid-cols-3 md:gap-6"> --}}
                             <div class="md:flex md:justify-center">
                                 <div class="mt-5 md:col-span-2 md:mt-0">
                                     <form action="{{ route('user.edit') }}" method="GET">
@@ -36,9 +36,6 @@
                                                         </label>
                                                         <p class="block text-xl font-medium text-gray-700">
                                                             {{ Auth::user()->name }}</p>
-                                                        {{-- <input type="text" name="first-name" id="first-name"
-                                                            autocomplete="given-name"
-                                                            class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"> --}}
                                                     </div>
                                                     <div class="col-span-6 sm:col-span-4">
                                                         <label for="email-address"
@@ -47,24 +44,24 @@
                                                         <p class="block text-xl font-medium text-gray-700">
                                                             {{ Auth::user()->email }}</p>
 
-                                                        {{-- <input type="text" name="email-address" id="email-address"
-                                                            autocomplete="email"
-                                                            class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"> --}}
                                                     </div>
                                                     <div class="col-span-6 sm:col-span-4">
                                                         <label for="email-address"
                                                             class="block text-sm font-medium text-gray-700">パスワード
                                                         </label>
                                                         <p class="block text-xl font-medium text-gray-700">******</p>
-                                                        {{-- <input type="text" name="email-address" id="email-address"
-                                                            autocomplete="email"
-                                                            class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"> --}}
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="bg-gray-50 px-4 py-3 text-right sm:px-6">
-                                                <button type="submit"
-                                                    class="inline-flex justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">変更する</button>
+                                            <div class="flex justify-around">
+                                                <div class="px-4 py-3 text-center sm:px-6">
+                                                    <button onclick="location.href='{{ route('user.my_page') }}'"
+                                                        class="inline-flex justify-center rounded-md border border-transparent bg-gray-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">戻る</button>
+                                                </div>
+                                                <div class="px-4 py-3 text-center sm:px-6">
+                                                    <button type="submit"
+                                                        class="inline-flex justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">変更する</button>
+                                                </div>
                                             </div>
                                         </div>
                                     </form>
@@ -72,9 +69,6 @@
                             </div>
                         </div>
                     </section>
-
-
-
                 </div>
             </div>
         </div>

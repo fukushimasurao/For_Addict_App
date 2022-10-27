@@ -28,10 +28,9 @@ class UserUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            // 'id' => ['integer','required'],
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['confirmed', 'required', Rules\Password::min(8)->letters()->mixedCase()->numbers()],
+            'email' => ['required', 'string', 'email', 'max:255'],
+            'password' => ['confirmed', Rules\Password::min(8)->letters()->mixedCase()->numbers()],
         ];
     }
 
