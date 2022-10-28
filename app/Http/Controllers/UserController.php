@@ -7,6 +7,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Validator;
 
 class UserController extends Controller
 {
@@ -20,11 +21,53 @@ class UserController extends Controller
         return view('user.edit');
     }
 
+    public function edit_select()
+    {
+        return view('user.edit-select');
+    }
+
+    public function edit_name()
+    {
+        return view('user.edit-name');
+    }
+
+    public function update_name(Request $request, $id)
+    {
+        if (Auth::id() !== (int)$id) {
+            return redirect(route('user.edit_name'))->withErrors('もう一度やり直してください。');
+        }
+
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|string|max:255',
+        ]);
+
+        if ($validator->fails()) {
+            return redirect(route('user.edit_name'))
+                        ->withErrors($validator)
+                        ->withInput();
+        }
+
+        // バリデーション済みデータの取得
+        $validated = $validator->validated();
+
+        $user = User::find($id);
+        $user->name = $validated['name'];
+        $user->save();
+        return redirect(route('user.edit_name'))->with('status', '名前を更新しました。');
+        ;
+    }
+
+    public function edit_email()
+    {
+        return view('user.edit-email');
+    }
+
     public function update(UserUpdateRequest $request, $id)
     {
+        $user = User::find($id);
+
         try {
             DB::beginTransaction();
-            $user = User::find($id);
             $user->name = $request->name;
             if (Auth::user()->email !== $request->email) {
                 $user->email = $request->email;

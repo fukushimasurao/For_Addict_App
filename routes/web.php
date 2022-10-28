@@ -28,8 +28,17 @@ Route::middleware(['auth'])->middleware('verified')->prefix('diary')->controller
 Route::middleware(['auth'])->middleware('verified')->prefix('user')->controller(UserController::class)->group(function () {
     Route::get('/my_page', 'index')->name('user.my_page');
     Route::get('/edit', 'edit')->name('user.edit');
+    Route::get('/edit_select', 'edit_select')->name('user.edit_select');
+    Route::get('/edit_name', 'edit_name')->name('user.edit_name');
+    Route::patch('/update_name/{id}', 'update_name')->where('id', '[0-9]+')->name('user.name_update');
+
+    Route::get('/edit_email', 'edit_email')->name('user.edit_email');
+
+    
+    Route::get('/edit_password', 'edit_password')->name('user.edit_password');
+    Route::get('/destroy', 'destroy')->name('user.destroy');
     Route::patch('/update/{id}', 'update')->where('id', '[0-9]+')->name('user.update');
-    Route::get('/destroy/{id}', 'destroy')->where('id', '[0-9]+')->name('user.destroy');
+    // Route::get('/destroy/{id}', 'destroy')->where('id', '[0-9]+')->name('user.destroy');
     //   マイページから、アドレスの変更、退会など。
 });
 

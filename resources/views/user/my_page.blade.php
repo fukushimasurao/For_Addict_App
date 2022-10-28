@@ -26,45 +26,45 @@
                             </div>
                             <div class="md:flex md:justify-center">
                                 <div class="mt-5 md:col-span-2 md:mt-0">
-                                    <form action="{{ route('user.edit') }}" method="GET">
-                                        <div class="overflow-hidden shadow sm:rounded-md">
-                                            <div class="bg-white px-4 py-5 sm:p-6">
-                                                <div class="grid grid-cols-6 gap-6">
-                                                    <div class="col-span-6 sm:col-span-3">
-                                                        <label for="first-name"
-                                                            class="block text-sm font-medium text-gray-700">ニックネーム
-                                                        </label>
-                                                        <p class="block text-xl font-medium text-gray-700">
-                                                            {{ Auth::user()->name }}</p>
-                                                    </div>
-                                                    <div class="col-span-6 sm:col-span-4">
-                                                        <label for="email-address"
-                                                            class="block text-sm font-medium text-gray-700">メールアドレス
-                                                        </label>
-                                                        <p class="block text-xl font-medium text-gray-700">
-                                                            {{ Auth::user()->email }}</p>
 
-                                                    </div>
-                                                    <div class="col-span-6 sm:col-span-4">
-                                                        <label for="email-address"
-                                                            class="block text-sm font-medium text-gray-700">パスワード
-                                                        </label>
-                                                        <p class="block text-xl font-medium text-gray-700">******</p>
-                                                    </div>
+                                    <div class="overflow-hidden shadow sm:rounded-md">
+                                        <div class="bg-white px-4 py-5 sm:p-6">
+                                            <div class="grid grid-cols-6 gap-6">
+                                                <div class="col-span-6 sm:col-span-3">
+                                                    <label for="first-name"
+                                                        class="block text-sm font-medium text-gray-700">ニックネーム
+                                                    </label>
+                                                    <p class="block text-xl font-medium text-gray-700">
+                                                        {{ Auth::user()->name }}</p>
                                                 </div>
-                                            </div>
-                                            <div class="flex justify-around">
-                                                <div class="px-4 py-3 text-center sm:px-6">
-                                                    <button onclick="location.href='{{ route('user.my_page') }}'"
-                                                        class="inline-flex justify-center rounded-md border border-transparent bg-gray-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">戻る</button>
+                                                <div class="col-span-6 sm:col-span-4">
+                                                    <label for="email-address"
+                                                        class="block text-sm font-medium text-gray-700">メールアドレス
+                                                    </label>
+                                                    <p class="block text-xl font-medium text-gray-700">
+                                                        {{ Auth::user()->email }}</p>
                                                 </div>
-                                                <div class="px-4 py-3 text-center sm:px-6">
-                                                    <button type="submit"
-                                                        class="inline-flex justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">変更する</button>
+                                                <div class="col-span-6 sm:col-span-4">
+                                                    <label for="email-address"
+                                                        class="block text-sm font-medium text-gray-700">パスワード
+                                                    </label>
+                                                    <p class="block text-xl font-medium text-gray-700">******</p>
                                                 </div>
                                             </div>
                                         </div>
-                                    </form>
+                                        <div class="flex justify-around">
+                                            <div class="px-4 py-3 text-center sm:px-6">
+                                                <button onclick="location.href='{{ route('user.my_page') }}'"
+                                                    class="inline-flex justify-center rounded-md border border-transparent bg-gray-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">戻る</button>
+                                            </div>
+                                            <div class="px-4 py-3 text-center sm:px-6">
+                                                <form action="{{ route('user.edit_select') }}" method="GET">
+                                                    <button type="submit"
+                                                        class="inline-flex justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">変更する</button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
