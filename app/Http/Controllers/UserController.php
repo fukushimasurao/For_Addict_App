@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rules;
 use Illuminate\Validation\Rules\Password;
+use Illuminate\Auth\Events\Registered;
 
 class UserController extends Controller
 {
@@ -66,11 +67,11 @@ class UserController extends Controller
 
     public function update_email(Request $request, $id)
     {
+        // https://zakkuri.life/laravel-send-verify-email/
+
         if (Auth::id() !== (int)$id) {
             return redirect(route('user.edit_email'))->withErrors('もう一度やり直してください。');
         }
-        // 'password' => ['confirmed', 'required', 'unique:users',
-        // Rules\Password::min(8)->letters()->mixedCase()->numbers()],
 
         $validator = Validator::make($request->all(), [
             'email' => ['confirmed', 'required', 'unique:users'],
@@ -86,9 +87,11 @@ class UserController extends Controller
         $validated = $validator->validated();
         $user = User::find($id);
         $user->email = $validated['email'];
+        $user->email_verified_at = null;
         $user->save();
+        event(new Registered($user));
+
         return redirect(route('user.my_page'))->with('status', 'メールアドレスを更新しました。');
-        ;
     }
 
 

@@ -64,7 +64,7 @@
                                                         @enderror
                                                     </div>
                                                 </div>
-                                                <div class="grid grid-cols-6 gap-6">
+                                                <div class="grid grid-cols-6 gap-6 mb-5">
                                                     <div class="col-span-6 sm:col-span-3">
                                                         <label for="first-email"
                                                             class="block text-sm font-medium text-gray-700">新しいメールアドレス（確認用）
@@ -91,6 +91,9 @@
                                                         @enderror --}}
                                                     </div>
                                                 </div>
+                                                <h1 class="text-red-600">
+                                                    ※確認用のメールが送信されます。<br />メールアドレスは間違いないように気をつけてください。<br />受信したメールはず確認してください。
+                                                </h1>
                                             </div>
                                             <div class="flex justify-around">
                                                 <div class="px-4 py-3 text-center sm:px-6">
