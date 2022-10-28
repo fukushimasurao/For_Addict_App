@@ -5,7 +5,7 @@
                 <div class="p-6 bg-white">
 
                     <section class="text-gray-600 body-font mb-5">
-                        <div class="container mx-auto flex px-5 py-1 md:flex-row flex-col items-center">
+                        <div class="container mx-auto flex px-5 py-5 md:flex-row flex-col items-center">
                             <div
                                 class="lg:flex-grow md:w-1/2 lg:pr-24 md:pr-16 flex flex-col md:items-start md:text-left mb-16 md:mb-0 items-center text-center">
                                 <h1 class="sm:text-5xl text-2xl font-medium title-font mb-2 text-gray-900">Record Your
@@ -21,7 +21,7 @@
                     </section>
 
                     <section class="text-gray-600 body-font mb-5">
-                        <div class="container px-5 py-24 mx-auto">
+                        <div class="container px-5 py-5 mx-auto">
                             <div class="text-center mb-20">
                                 <h1 class="sm:text-3xl text-2xl font-medium title-font text-gray-900 mb-4">For All
                                     Addictions.</h1>
