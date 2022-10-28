@@ -8,6 +8,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rules;
+use Illuminate\Validation\Rules\Password;
 
 class UserController extends Controller
 {
@@ -61,6 +63,34 @@ class UserController extends Controller
     {
         return view('user.edit-email');
     }
+
+    public function update_email(Request $request, $id)
+    {
+        if (Auth::id() !== (int)$id) {
+            return redirect(route('user.edit_email'))->withErrors('もう一度やり直してください。');
+        }
+        // 'password' => ['confirmed', 'required', 'unique:users',
+        // Rules\Password::min(8)->letters()->mixedCase()->numbers()],
+
+        $validator = Validator::make($request->all(), [
+            'email' => ['confirmed', 'required', 'unique:users'],
+        ]);
+
+        if ($validator->fails()) {
+            return redirect(route('user.edit_email'))
+                        ->withErrors($validator)
+                        ->withInput();
+        }
+
+        // バリデーション済みデータの取得
+        $validated = $validator->validated();
+        $user = User::find($id);
+        $user->email = $validated['email'];
+        $user->save();
+        return redirect(route('user.my_page'))->with('status', 'メールアドレスを更新しました。');
+        ;
+    }
+
 
     public function update(UserUpdateRequest $request, $id)
     {
