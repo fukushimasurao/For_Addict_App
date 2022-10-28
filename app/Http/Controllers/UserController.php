@@ -83,15 +83,67 @@ class UserController extends Controller
                         ->withInput();
         }
 
-        // バリデーション済みデータの取得
-        $validated = $validator->validated();
-        $user = User::find($id);
-        $user->email = $validated['email'];
-        $user->email_verified_at = null;
-        $user->save();
-        event(new Registered($user));
+        try {
+            DB::beginTransaction();
+            // バリデーション済みデータの取得
+            $validated = $validator->validated();
+            $user = User::find($id);
+            $user->email = $validated['email'];
+            $user->email_verified_at = null;
+            $user->save();
+            event(new Registered($user));
 
-        return redirect(route('user.my_page'))->with('status', 'メールアドレスを更新しました。');
+            DB::commit();
+            return redirect(route('user.my_page'))->with('status', 'メールアドレスを更新しました。');
+        } catch (\Exception $ex) {
+            DB::rollback();
+            logger($ex->getMessage());
+            return redirect(route('user.my_page'))->withErrors($ex->getMessage());
+        }
+    }
+
+    public function edit_password()
+    {
+        return view('user.edit-password');
+    }
+
+    public function update_password(Request $request, $id)
+    {
+        if (Auth::id() !== (int)$id) {
+            return redirect(route('user.edit_password'))->withErrors('もう一度やり直してください。');
+        }
+
+        $validator = Validator::make($request->all(), [
+            'password' => ['confirmed', 'required', Rules\Password::min(8)->letters()->mixedCase()->numbers()],
+        ]);
+
+        if ($validator->fails()) {
+            return redirect(route('user.edit_password'))
+                        ->withErrors($validator)
+                        ->withInput();
+        }
+
+        try {
+            DB::beginTransaction();
+            // バリデーション済みデータの取得
+            $validated = $validator->validated();
+            $user = User::find($id);
+            $user->password = bcrypt($validated['password']);
+            $user->save();
+
+            DB::commit();
+            return redirect(route('user.my_page'))->with('status', 'メールアドレスを更新しました。');
+        } catch (\Exception $ex) {
+            DB::rollback();
+            logger($ex->getMessage());
+            return redirect(route('user.my_page'))->withErrors($ex->getMessage());
+        }
+
+        // $validated = $validator->validated();
+        // $user = User::find($id);
+        // $user->password = bcrypt($validated['password']);
+        // $user->save();
+        // return redirect(route('user.my_page'))->with('status', 'メールアドレスを更新しました。');
     }
 
 

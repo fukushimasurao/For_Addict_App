@@ -36,6 +36,8 @@ Route::middleware(['auth'])->middleware('verified')->prefix('user')->controller(
     Route::patch('/update_email/{id}', 'update_email')->where('id', '[0-9]+')->name('user.email_update');
 
     Route::get('/edit_password', 'edit_password')->name('user.edit_password');
+    Route::patch('/password_update/{id}', 'update_password')->where('id', '[0-9]+')->name('user.password_update');
+
     Route::get('/destroy', 'destroy')->name('user.destroy');
     Route::patch('/update/{id}', 'update')->where('id', '[0-9]+')->name('user.update');
     // Route::get('/destroy/{id}', 'destroy')->where('id', '[0-9]+')->name('user.destroy');
