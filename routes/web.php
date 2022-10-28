@@ -38,10 +38,8 @@ Route::middleware(['auth'])->middleware('verified')->prefix('user')->controller(
     Route::get('/edit_password', 'edit_password')->name('user.edit_password');
     Route::patch('/password_update/{id}', 'update_password')->where('id', '[0-9]+')->name('user.password_update');
 
-    Route::get('/destroy', 'destroy')->name('user.destroy');
-    Route::patch('/update/{id}', 'update')->where('id', '[0-9]+')->name('user.update');
-    // Route::get('/destroy/{id}', 'destroy')->where('id', '[0-9]+')->name('user.destroy');
-    //   マイページから、アドレスの変更、退会など。
+    Route::get('/confirm_destroy', 'confirm_destroy')->name('user.confirm_destroy');
+    Route::delete('/destroy/{id}', 'destroy')->where('id', '[0-9]+')->name('user.destroy');
 });
 
 require __DIR__.'/auth.php';

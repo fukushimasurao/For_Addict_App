@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rules;
 use Illuminate\Validation\Rules\Password;
 use Illuminate\Auth\Events\Registered;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -138,14 +139,7 @@ class UserController extends Controller
             logger($ex->getMessage());
             return redirect(route('user.my_page'))->withErrors($ex->getMessage());
         }
-
-        // $validated = $validator->validated();
-        // $user = User::find($id);
-        // $user->password = bcrypt($validated['password']);
-        // $user->save();
-        // return redirect(route('user.my_page'))->with('status', 'メールアドレスを更新しました。');
     }
-
 
     public function update(UserUpdateRequest $request, $id)
     {
@@ -170,12 +164,35 @@ class UserController extends Controller
         }
     }
 
-    public function destroy($id)
+
+    public function confirm_destroy()
     {
+        return view('user.confirm_destroy');
+    }
+
+    public function destroy(Request $request, $id)
+    {
+        $user = User::find($id);
+        $validator = Validator::make($request->all(), [
+            'password' => ['required', Rules\Password::min(8)->letters()->mixedCase()->numbers()],
+        ]);
+
+        if ($validator->fails()) {
+            return redirect(route('user.confirm_destroy'))
+                        ->withErrors('パスワードを確認してください。')
+                        ->withInput();
+        }
+        $validated = $validator->validated();
+
         try {
             if (Auth::id() !== (int)$id) {
                 throw new \Exception("ログインユーザーではありません。ログインユーザーid:" . Auth::id() . ' 入力IDは' . $id);
-                return redirect('/');
+                return redirect('/user/confirm_destroy');
+            }
+
+            if (Hash::check($validated['password'], $user->password)) {
+                throw new \Exception("パスワードが違います。ではありません。ログインユーザーid:" . Auth::id() . ' 入力IDは' . $id);
+                return redirect('/user/confirm_destroy');
             }
 
             User::findOrFail($id)->delete();
