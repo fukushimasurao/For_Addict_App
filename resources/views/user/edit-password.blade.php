@@ -21,30 +21,28 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
-
-                    <section class="py-5 bg-blueGray-50">
-                        <div class="mt-10 sm:mt-0">
-                            <div class="px-4 py-5 sm:px-6">
+                    <section class="bg-blueGray-50">
+                        <div class="mt-0 sm:mt-0">
+                            <div class="px-3 py-3">
                                 <h3 class="text-lg text-center font-medium leading-6 text-gray-900">マイページ（パスワード編集）</h3>
                             </div>
                             {{-- <div class="md:grid md:grid-cols-3 md:gap-6"> --}}
-                            <div class="md:flex md:justify-center">
+                            <div class="flex justify-center">
                                 <div class="mt-5 md:col-span-2 md:mt-0">
                                     <form action="{{ route('user.password_update', ['id' => Auth::user()->id]) }}"
                                         method="POST">
                                         @csrf
                                         @method('PATCH')
-                                        {{-- <input type="hidden" email="id" value="{{ Auth::user()->email }}"> --}}
                                         <div class="overflow-hidden shadow sm:rounded-md">
                                             <div class="bg-white px-4 py-5 sm:p-6">
-                                                <div class="grid grid-cols-6 gap-6 mb-5">
-                                                    <div class="col-span-6 sm:col-span-3">
+                                                <div class="flex mb-5">
+                                                    <div class="">
                                                         <label for="password"
                                                             class="block text-sm font-medium text-gray-700">新しいパスワード
                                                         </label>
                                                         <input type="password" name="password" id="password"
                                                             autocomplete="password"
-                                                            class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
+                                                            class="block rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
                                                         <span class="text-sm text-blue-500">※大文字・小文字含む8文字以上の半角英数</span>
 
                                                         @error('password')
@@ -66,15 +64,15 @@
 
                                                     </div>
                                                 </div>
-                                                <div class="grid grid-cols-6 gap-6 mb-5">
-                                                    <div class="col-span-6 sm:col-span-3">
+                                                <div class="flex">
+                                                    <div class="">
                                                         <label for="password_confirmation"
                                                             class="block text-sm font-medium text-gray-700">新しいメールパスワード（確認用）
                                                         </label>
                                                         <input type="password" name="password_confirmation"
                                                             id="password_confirmation"
                                                             autocomplete="password_confirmation"
-                                                            class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
+                                                            class="block rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
                                                     </div>
                                                 </div>
                                             </div>
