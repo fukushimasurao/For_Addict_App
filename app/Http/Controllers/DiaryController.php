@@ -53,7 +53,6 @@ class DiaryController extends Controller
      */
     public function store(DiaryStoreRequest $request)
     {
-        ddd($request->importance);
         $user_id = Auth::id();
         try {
             Diary::create([
