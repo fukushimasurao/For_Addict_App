@@ -4,9 +4,8 @@
         <div class="flex justify-between h-16">
             <div class="flex">
                 <!-- Logo -->
-                <div class="shrink-0 flex items-center">
+                <div class="shrink-0 flex items-center m-3 w-10 h-10">
                     <a href="{{ route('diary') }}">
-                        <img src="{{ asset('/assets/images/logo/dora.png') }}" alt="">
                         <x-application-logo class="block h-10 w-auto fill-current text-gray-600" />
                     </a>
                 </div>
