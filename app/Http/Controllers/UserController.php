@@ -176,22 +176,22 @@ class UserController extends Controller
         $validator = Validator::make($request->all(), [
             'password' => ['required', Rules\Password::min(8)->letters()->mixedCase()->numbers()],
         ]);
-
         if ($validator->fails()) {
+            return redirect(route('user.confirm_destroy'))
+                        ->withErrors('パスワードの形式を確認してください。')
+                        ->withInput();
+        }
+
+        $validated = $validator->validated();
+        if (!Hash::check($validated['password'], $user->password)) {
             return redirect(route('user.confirm_destroy'))
                         ->withErrors('パスワードを確認してください。')
                         ->withInput();
         }
-        $validated = $validator->validated();
 
         try {
             if (Auth::id() !== (int)$id) {
                 throw new \Exception("ログインユーザーではありません。ログインユーザーid:" . Auth::id() . ' 入力IDは' . $id);
-                return redirect('/user/confirm_destroy');
-            }
-
-            if (Hash::check($validated['password'], $user->password)) {
-                throw new \Exception("パスワードが違います。ではありません。ログインユーザーid:" . Auth::id() . ' 入力IDは' . $id);
                 return redirect('/user/confirm_destroy');
             }
 
