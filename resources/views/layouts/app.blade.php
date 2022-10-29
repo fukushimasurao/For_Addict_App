@@ -5,7 +5,20 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-
+    <meta name="description" content="衝動記録くん" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content=""" />
+    <meta name="twitter:image" content="" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="衝動記録くん" />
+    <meta property="og:url" content="" />
+    <meta property="og:image" content="" />
+    <meta property="og:description" content="衝動記録くん" />
+    <meta property="og:locale" content="ja_JP" />
+    <meta property="og:site_name" content="衝動記録くん" />
+    <link href="{{ asset('storage/images/logo/logo-middle.png') }}" type="image/x-icon" rel="icon" />
+    <link href="{{ asset('storage/images/logo/logo-middle.png') }}" type="image/x-icon" rel="shortcut icon" />
+    <meta name="next-head-count" content="2" />
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Fonts -->
