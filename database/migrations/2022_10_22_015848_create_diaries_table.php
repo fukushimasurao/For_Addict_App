@@ -14,7 +14,7 @@ return new class () extends Migration {
     {
         Schema::create('diaries', function (Blueprint $table) {
             $table->id();
-            $table->integer('user_id');
+            $table->char('user_id', 36);
             $table->date('date')->comment('症状が発生した日付()');
             $table->time('time')->comment('症状が発生した時間');
             $table->smallInteger('elapsed_time')->comment('経過時間、どれくらい続いたのか（分）');
