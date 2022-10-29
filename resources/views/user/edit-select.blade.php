@@ -21,8 +21,7 @@
                             <div class="px-4 py-5 sm:px-6">
                                 <h3 class="text-lg text-center font-medium leading-6 text-gray-900">マイページ（編集選択）</h3>
                             </div>
-                            {{-- <div class="md:grid md:grid-cols-3 md:gap-6"> --}}
-                            <div class="md:flex md:flex-col md:items-center">
+                            <div class="flex flex-col items-center">
 
                                 <form action="{{ route('user.edit_name') }}" method="get">
                                     <div class="px-4 py-3 text-right sm:px-6">
