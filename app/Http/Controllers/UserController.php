@@ -37,7 +37,7 @@ class UserController extends Controller
 
     public function update_name(Request $request, $id)
     {
-        if (Auth::id() !== (int)$id) {
+        if (Auth::id() !== $id) {
             return redirect(route('user.edit_name'))->withErrors('もう一度やり直してください。');
         }
 
@@ -70,7 +70,7 @@ class UserController extends Controller
     {
         // https://zakkuri.life/laravel-send-verify-email/
 
-        if (Auth::id() !== (int)$id) {
+        if (Auth::id() !== $id) {
             return redirect(route('user.edit_email'))->withErrors('もう一度やり直してください。');
         }
 
@@ -110,7 +110,7 @@ class UserController extends Controller
 
     public function update_password(Request $request, $id)
     {
-        if (Auth::id() !== (int)$id) {
+        if (Auth::id() !== $id) {
             return redirect(route('user.edit_password'))->withErrors('もう一度やり直してください。');
         }
 
@@ -133,7 +133,7 @@ class UserController extends Controller
             $user->save();
 
             DB::commit();
-            return redirect(route('user.my_page'))->with('status', 'メールアドレスを更新しました。');
+            return redirect(route('user.my_page'))->with('status', 'パスワードを更新しました。');
         } catch (\Exception $ex) {
             DB::rollback();
             logger($ex->getMessage());
