@@ -1,0 +1,9 @@
+{
+    "name": "衝動記録くん",
+    "short_name": "衝動記録くん",
+    "theme_color": "#fff",
+    "background_color": "#fff",
+    "display": "standalone",
+    "scope": "/",
+    "start_url": "/"
+}
