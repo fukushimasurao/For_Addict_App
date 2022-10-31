@@ -1,1 +1,1 @@
-<img src="{{ asset('storage/images/logo/logo-middle.png') }}" alt="ロゴ">
+<img src="{{ asset('storage/images/logo/new_logo.png') }}" alt="ロゴ">
