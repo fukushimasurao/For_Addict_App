@@ -69,6 +69,11 @@ laravel * sailを利用。
 
 Trello 公開済み <https://trello.com/b/nlcqW4Uq>
 
+本番
+
+- <https://fly.io/>
+- <https://app.planetscale.com/>
+
 ![名称未設定のノート中毒-2](https://user-images.githubusercontent.com/46878156/188294648-2f51a2ff-896a-4862-82d8-aeaa37ce6249.jpg)
 ![名称未設定のノート中毒-3](https://user-images.githubusercontent.com/46878156/188294647-8a847188-7337-4208-a728-ea71cc51a2c1.jpg)
 ![名称未設定のノート中毒-4](https://user-images.githubusercontent.com/46878156/188294646-1ebe6771-cf79-4e45-8b76-bb65a24fda38.jpg)
