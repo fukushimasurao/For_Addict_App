@@ -31,6 +31,11 @@ class DiaryController extends Controller
         }
         $user_id = Auth::id();
         $diary = Diary::query()->where('user_id', $user_id)->where('uuid', $uuid)->first();
+
+        if ($diary === null) {
+            return redirect('diary')->withErrors('エラーが発生しました。');
+        }
+
         $importance_emoji = Diary::DIARY_STATUS_OBJECT[$diary->importance];
         return view('diary.detail', compact('diary', 'importance_emoji'));
     }

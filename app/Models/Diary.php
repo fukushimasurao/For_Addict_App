@@ -38,13 +38,6 @@ class Diary extends Model
         self::DIARY_STATUS_VERY_GOOD => self::DIARY_STATUS_NAME_VERY_GOOD,
     ];
 
-    // public const DIARY_STATUS_ARRAY = [
-    //     self::DIARY_STATUS_READING,
-    //     self::DIARY_STATUS_UNREAD,
-    //     self::DIARY_STATUS_DONE,
-    //     self::DIARY_STATUS_WANT_READ,
-    // ];
-
     public function user()
     {
         return $this->belongsTo('App\User');
