@@ -24,7 +24,7 @@ class DiaryUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'id' => ['integer','required'],
+            'uuid' => ['uuid'],
             'importance' => ['required', 'integer', 'between:1,5'],
             'date' => ['required', 'date'],
             'time' => ['required', 'date_format:H:i'],

@@ -71,7 +71,7 @@
                         <button onclick="history.back()"
                             class="mt-4 mr-4 shadow bg-gray-500 hover:bg-gray-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded"
                             type="button">{{ __('戻る') }}</button>
-                        <button onclick="location.href='/diary/edit/{{ $diary->id }}'"
+                        <button onclick="location.href='/diary/edit/{{ $diary->uuid }}'"
                             class="mt-4 mr-2 shadow bg-orange-500 hover:bg-orange-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded">変更</button>
                         <div class="absolute inset-y-0 right-0">
                             <form action="{{ route('book.destroy', ['id' => $diary->id]) }}" method="POST">

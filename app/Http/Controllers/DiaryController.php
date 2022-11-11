@@ -88,9 +88,14 @@ class DiaryController extends Controller
         //
     }
 
-    public function edit($id)
+    public function edit($uuid)
     {
-        $diary = Diary::find($id);
+        $user_id = Auth::id();
+        $diary = Diary::where('user_id', $user_id)->where('uuid', $uuid)->first();
+        if ($diary === null) {
+            return redirect('diary')->withErrors('エラーが発生しました。');
+        }
+
         return view('diary.edit', ['diary' => $diary]);
     }
 
@@ -103,9 +108,10 @@ class DiaryController extends Controller
      */
     public function update(DiaryUpdateRequest $request, Diary $diary)
     {
+        $user_id = Auth::id();
         try {
             DB::beginTransaction();
-            $diary = Diary::find($request->input('id'));
+            $diary = Diary::where('user_id', $user_id)->where('uuid', $request->input('uuid'))->first();
             $diary->importance = $request->input('importance');
             $diary->date = $request->input('date');
             $diary->time = $request->input('time');
