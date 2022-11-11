@@ -49,6 +49,9 @@
 
 laravel * sailを利用。
 
+- PHP `8.1.12`
+- Laravel `9.36.4`
+
 - 起動時
 `sail up -d`
 
