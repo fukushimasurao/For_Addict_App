@@ -14,22 +14,10 @@
 
                         <div class="overflow-hidden bg-white shadow sm:rounded-lg">
                             <div class="px-4 py-5 sm:px-6">
-                                <h3 class="text-lg font-medium leading-6 text-gray-900">日記の編集</h3>
+                                <h3 class="text-lg font-medium leading-6 text-gray-900">日記を記録する</h3>
                             </div>
                             <div class="border-t border-gray-200">
                                 <dl>
-                                    <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                                        <dt class="text-sm font-medium text-gray-500">id</dt>
-                                        <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
-                                            <input value="" name="id" type="hidden">
-                                        </dd>
-                                    </div>
-                                    <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                                        <dt class="text-sm font-medium text-gray-500">user id</dt>
-                                        <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
-                                        </dd>
-                                    </div>
-
                                     <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                                         <dt class="text-sm font-medium text-gray-500">重要度</dt>
                                         @error('importance')
