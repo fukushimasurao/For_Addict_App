@@ -46,7 +46,7 @@
                                         </div>
                                         <div class="flex justify-around">
                                             <div class="px-4 py-3 text-center sm:px-6">
-                                                <button onclick="location.href='{{ route('user.my_page') }}'"
+                                                <button onclick="location.href='{{ route('diary') }}'"
                                                     class="inline-flex justify-center rounded-md border border-transparent bg-gray-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">戻る</button>
                                             </div>
                                             <div class="px-4 py-3 text-center sm:px-6">
