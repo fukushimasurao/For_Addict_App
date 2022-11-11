@@ -69,8 +69,6 @@
                                 </x-dropdown-link>
                             </form>
                         </x-slot>
-
-
                     </x-dropdown>
                 </div>
             @endauth
@@ -114,6 +112,11 @@
             <div class="pt-2 pb-3 space-y-1">
                 <x-responsive-nav-link :href="route('diary.create')" :active="request()->routeIs('diary.create')">
                     {{ __('記録する') }}
+                </x-responsive-nav-link>
+            </div>
+            <div class="pt-2 pb-3 space-y-1">
+                <x-responsive-nav-link :href="route('user.my_page')" :active="request()->routeIs('user.my_page')">
+                    {{ __('マイページ') }}
                 </x-responsive-nav-link>
             </div>
 
