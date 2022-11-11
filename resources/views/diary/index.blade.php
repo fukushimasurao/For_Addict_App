@@ -67,14 +67,6 @@
                                                     </svg>
                                                 </span>{{ Str::limit($diary->feeling, 20, '...') }}
                                             </p>
-                                            {{-- <button onclick="location.href='/diary/detail/{{ $diary->uuid }}'"
-                                                class="flex items-center mt-auto text-white bg-indigo-500 border-0 py-2 px-4 w-full focus:outline-none hover:bg-indigo-600 rounded">詳細
-                                                <svg fill="none" stroke="currentColor" stroke-linecap="round"
-                                                    stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-auto"
-                                                    viewBox="0 0 24 24">
-                                                    <path d="M5 12h14M12 5l7 7-7 7"></path>
-                                                </svg>
-                                            </button> --}}
                                         </div>
                                     </div>
                                 @endforeach

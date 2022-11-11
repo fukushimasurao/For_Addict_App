@@ -1,12 +1,4 @@
 <x-app-layout>
-    {{-- <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('症状日記') }}
-            <button onclick="location.href='{{ route('diary.create') }}'"
-                class="text-base ml-5 shadow bg-blue-500 hover:bg-blue-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded">新規作成</button>
-        </h2>
-
-    </x-slot> --}}
     @if ($errors)
         @foreach ($errors->all() as $error)
             <x-ui.flash-error-message message="{{ $error }}"></x-ui.flash-error-message>
@@ -24,14 +16,12 @@
                             <div class="px-3 py-3">
                                 <h3 class="text-lg text-center font-medium leading-6 text-gray-900">マイページ（名前編集）</h3>
                             </div>
-                            {{-- <div class="md:grid md:grid-cols-3 md:gap-6"> --}}
                             <div class="md:flex md:justify-center">
                                 <div class="mt-5 md:col-span-2 md:mt-0">
                                     <form action="{{ route('user.name_update', ['id' => Auth::user()->id]) }}"
                                         method="POST">
                                         @csrf
                                         @method('PATCH')
-                                        {{-- <input type="hidden" name="id" value="{{ Auth::user()->name }}"> --}}
                                         <div class="overflow-hidden shadow sm:rounded-md">
                                             <div class="bg-white px-3 py-3 sm:p-6">
                                                 <div class="flex justify-center">
