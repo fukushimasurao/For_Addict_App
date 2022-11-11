@@ -14,14 +14,12 @@
                             </div>
                             <p class="text-lg text-center font-medium leading-6 text-gray-900 mb-3">
                                 一度削除すると、今まで保存したデータは復元できません。<br />本当に削除しますか？</p>
-                            {{-- <div class="md:grid md:grid-cols-3 md:gap-6"> --}}
                             <div class="md:flex md:justify-center">
                                 <div class="mt-5 md:col-span-2 md:mt-0">
-                                    <form action="{{ route('user.destroy', ['id' => Auth::user()->id]) }}"
+                                    <form action="{{ route('user.destroy', ['uuid' => Auth::user()->id]) }}"
                                         method="POST">
                                         @csrf
                                         @method('delete')
-                                        {{-- <input type="hidden" email="id" value="{{ Auth::user()->email }}"> --}}
                                         <div class="overflow-hidden shadow sm:rounded-md">
                                             <div class="bg-white px-4 py-5 sm:p-6">
                                                 <div class="flex">

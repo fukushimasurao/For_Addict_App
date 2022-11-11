@@ -172,13 +172,13 @@ class UserController extends Controller
 
     public function destroy(Request $request, $id)
     {
-        $user = User::find($id);
+        $user = User::findOrFail($id);
         $validator = Validator::make($request->all(), [
             'password' => ['required', Rules\Password::min(8)->letters()->mixedCase()->numbers()],
         ]);
         if ($validator->fails()) {
             return redirect(route('user.confirm_destroy'))
-                        ->withErrors('パスワードの形式を確認してください。')
+                        ->withErrors('パスワードの形式を確認してください。(半角大文字・半角数字含む８文字以上)')
                         ->withInput();
         }
 
@@ -190,7 +190,7 @@ class UserController extends Controller
         }
 
         try {
-            if (Auth::id() !== (int)$id) {
+            if (Auth::id() !== $id) {
                 throw new \Exception("ログインユーザーではありません。ログインユーザーid:" . Auth::id() . ' 入力IDは' . $id);
                 return redirect('/user/confirm_destroy');
             }
