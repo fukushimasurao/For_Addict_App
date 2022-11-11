@@ -18,7 +18,7 @@ Route::middleware(['auth'])->middleware('verified')->prefix('diary')->controller
     Route::get('/detail/{uuid}', 'detail')->where('uuid', '([0-9a-f]{8})-([0-9a-f]{4})-([0-9a-f]{4})-([0-9a-f]{4})-([0-9a-f]{12})')->name('diary.detail');
     Route::get('/edit/{uuid}', 'edit')->where('uuid', '([0-9a-f]{8})-([0-9a-f]{4})-([0-9a-f]{4})-([0-9a-f]{4})-([0-9a-f]{12})')->name('diary.edit');
     Route::post('/create', 'store')->name('diary.store');
-    Route::PATCH('/update', 'update')->name('diary.update');
+    Route::PATCH('/update/{uuid}', 'update')->where('uuid', '([0-9a-f]{8})-([0-9a-f]{4})-([0-9a-f]{4})-([0-9a-f]{4})-([0-9a-f]{12})')->name('diary.update');
     Route::delete('/destroy/{uuid}', 'destroy')->where('uuid', '([0-9a-f]{8})-([0-9a-f]{4})-([0-9a-f]{4})-([0-9a-f]{4})-([0-9a-f]{12})')->name('book.destroy');
 });
 

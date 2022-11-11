@@ -106,12 +106,12 @@ class DiaryController extends Controller
      * @param  \App\Models\Diary  $diary
      * @return \Illuminate\Http\Response
      */
-    public function update(DiaryUpdateRequest $request, Diary $diary)
+    public function update(DiaryUpdateRequest $request, Diary $diary, $uuid)
     {
         $user_id = Auth::id();
         try {
             DB::beginTransaction();
-            $diary = Diary::where('user_id', $user_id)->where('uuid', $request->input('uuid'))->first();
+            $diary = Diary::where('user_id', $user_id)->where('uuid', $uuid)->first();
             $diary->importance = $request->input('importance');
             $diary->date = $request->input('date');
             $diary->time = $request->input('time');
