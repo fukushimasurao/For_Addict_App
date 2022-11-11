@@ -134,11 +134,15 @@ class DiaryController extends Controller
      * @param  \App\Models\Diary  $diary
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($uuid)
     {
+        $user_id = Auth::id();
         try {
-            Diary::find($id)->delete();
-            return redirect('diary')->with('status', '記録を削除しました。');
+            if (Diary::where('uuid', $uuid)->where('user_id', $user_id)->first()->delete() === null) {
+                throw new \Exception('削除に失敗しました');
+            } else {
+                return redirect('diary')->with('status', '記録を削除しました。');
+            }
         } catch (\Exception $ex) {
             logger($ex->getMessage());
             return redirect('diary')->withErrors($ex->getMessage());

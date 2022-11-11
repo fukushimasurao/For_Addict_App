@@ -74,7 +74,7 @@
                         <button onclick="location.href='/diary/edit/{{ $diary->uuid }}'"
                             class="mt-4 mr-2 shadow bg-orange-500 hover:bg-orange-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded">変更</button>
                         <div class="absolute inset-y-0 right-0">
-                            <form action="{{ route('book.destroy', ['id' => $diary->id]) }}" method="POST">
+                            <form action="{{ route('book.destroy', ['uuid' => $diary->uuid]) }}" method="POST">
                                 @csrf
                                 @method('delete')
                                 <button type="submit" onclick="return confirm('記事を削除をすると復元できません。\n本当に削除しますか？')"

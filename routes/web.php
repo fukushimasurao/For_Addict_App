@@ -18,10 +18,9 @@ Route::middleware(['auth'])->middleware('verified')->prefix('diary')->controller
     Route::get('/create', 'create')->name('diary.create');
     Route::get('/detail/{uuid}', 'detail')->name('diary.detail');
     Route::get('/edit/{uuid}', 'edit')->name('diary.edit');
-    // Route::get('/my_page', 'my_page')->name('diary.my_page');
     Route::post('/create', 'store')->name('diary.store');
     Route::PATCH('/update', 'update')->name('diary.update');
-    Route::delete('/destroy/{id}', 'destroy')->name('book.destroy');
+    Route::delete('/destroy/{uuid}', 'destroy')->where('uuid', '([0-9a-f]{8})-([0-9a-f]{4})-([0-9a-f]{4})-([0-9a-f]{4})-([0-9a-f]{12})')->name('book.destroy');
 });
 
 
@@ -39,7 +38,7 @@ Route::middleware(['auth'])->middleware('verified')->prefix('user')->controller(
     Route::patch('/password_update/{id}', 'update_password')->where('id', '([0-9a-f]{8})-([0-9a-f]{4})-([0-9a-f]{4})-([0-9a-f]{4})-([0-9a-f]{12})')->name('user.password_update');
 
     Route::get('/confirm_destroy', 'confirm_destroy')->name('user.confirm_destroy');
-    Route::delete('/destroy/{id}', 'destroy')->where('id', '([0-9a-f]{8})-([0-9a-f]{4})-([0-9a-f]{4})-([0-9a-f]{4})-([0-9a-f]{12})')->name('user.destroy');
+    Route::delete('/destroy/{uuid}', 'destroy')->where('uuid', '([0-9a-f]{8})-([0-9a-f]{4})-([0-9a-f]{4})-([0-9a-f]{4})-([0-9a-f]{12})')->name('user.destroy');
 });
 
 require __DIR__.'/auth.php';
