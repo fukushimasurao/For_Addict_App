@@ -23,7 +23,7 @@
                         <a href="https://trello.com/b/nlcqW4Uq" class="text-gray-600 hover:text-gray-800">開発者記録</a>
                     </li>
                     <li>
-                        <a href="https://trello.com/b/nlcqW4Uq" class="text-gray-600 hover:text-gray-800">利用規約</a>
+                        <a href="{{ route('terms-of-service') }}" class="text-gray-600 hover:text-gray-800">利用規約</a>
                     </li>
                 </nav>
             </div>
