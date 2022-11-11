@@ -11,7 +11,7 @@ processes = []
     PHP_VERSION = "8.1"
 
 [env]
-  APP_NAME = "衝動記録くん"
+  APP_NAME = "衝動記録くん β"
   APP_URL = "https://for-addict-app.fly.dev/"
   APP_ENV = "production"
   APP_DEBUG="false"
@@ -27,7 +27,7 @@ processes = []
   MAIL_DRIVER="smtp"
   MAIL_HOST="smtp.gmail.com"
   MAIL_PORT="587"
-  MAIL_FROM_NAME="衝動記録くん"
+  MAIL_FROM_NAME="衝動記録くん β"
 
 [experimental]
   allowed_public_ports = []
